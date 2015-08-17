@@ -6,13 +6,13 @@ gems:
 
 # Site settings
 title: "Blog & stuff"
-description: > A blog about some things.
+description: A blog about some things.
 
 email: drewsprice@gmail.com
 #blog logo
 logo: "/assets/images/logo.png"
 # blog cover
-cover: "/assets/images/cA4aKEIPQrerBnp1yGHv_IMG_9534-3-2.jpg"
+cover: "/assets/images/ocean.jpg"
 
 name: 'Drew Price'
 author: 'Drew Price'

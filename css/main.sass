@@ -84,6 +84,7 @@ body
   @include respond-to(800)
     padding: 0 $rs
   .blog-logo
+    display: none
     width: $rs*7.5
     height: $rs*7.5
     position: absolute
@@ -94,11 +95,11 @@ body
     border-radius: 50%
     z-index: 99
     text-indent: -9999px
-    border: 3px solid #fff
+    // border: 3px solid #fff
     background-color: #fff
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.3)
-    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.3)
-    box-shadow: 0 1px 1px rgba(0,0,0,0.3)
+    // -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.3)
+    // -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.3)
+    // box-shadow: 0 1px 1px rgba(0,0,0,0.3)
   .blog-title
     margin: 0
     padding: $rs*5.25 $rs $rs/2
@@ -215,7 +216,7 @@ body
   z-index: 999
 .tag-articleimage .post-reading
   color: rgba(255,255,255,0.9)
-  text-shadow: 0px 1px 4px rgba(0,0,0,0.25), 0px 0px 1px rgba(0,0,0,0.5)
+  // text-shadow: 0px 1px 4px rgba(0,0,0,0.25), 0px 0px 1px rgba(0,0,0,0.5)
 
 .site-footer
   margin: 0 auto
@@ -269,9 +270,10 @@ body
       line-height: 1.1
       color: #fff
       margin-bottom: 16px
-      text-shadow: 0px 1px 16px rgba(0,0,0,0.5), 0px 0px 1px rgba(0,0,0,0.5)
+      // text-shadow: 0px 1px 16px rgba(0,0,0,0.5), 0px 0px 1px rgba(0,0,0,0.5)
     .author-image
-      display: inline-block
+      display: none
+      // display: inline-block
       width: 30px
       height: 30px
       line-height: 30px
@@ -282,13 +284,14 @@ body
       border-radius: 100%
       text-indent: -9999px
     .author-name
-      display: inline
+      display: none
+      // display: inline
     .post-meta-text
       color: rgba(255,255,255,0.75)
       letter-spacing: -0.02em
       font-weight: 400
       font-style: normal
-      text-shadow: 0px 1px 4px rgba(0,0,0,0.25), 0px 0px 1px rgba(0,0,0,0.5)
+      // text-shadow: 0px 1px 4px rgba(0,0,0,0.25), 0px 0px 1px rgba(0,0,0,0.5)
       font-size: 14px
       overflow: hidden
       font-family: $font-sans
@@ -404,13 +407,13 @@ body
     blockquote
       margin: 0 0 30px
       margin-left: -26px
-      border-left: 3px solid #57ad68
+      border-left: 3px solid #93B3C0
       padding-left: 20px
       p
         letter-spacing: 0.01rem
         font-weight: 400
         font-style: italic
-        mborder-left: 3px solid #57ad68
+        mborder-left: 3px solid #93B3C0
         mpadding-left: 20px
         mmargin-left: -26px
         padding-bottom: 3px
@@ -551,7 +554,7 @@ body
       line-height: 50px
       word-break: break-word
       color: #fff
-      text-shadow: 0px 1px 16px rgba(0,0,0,0.5), 0px 0px 1px rgba(0,0,0,0.5)
+      // text-shadow: 0px 1px 16px rgba(0,0,0,0.5), 0px 0px 1px rgba(0,0,0,0.5)
     .blog-description
       margin: 0 0 50px
       padding: 0 $rs*2
@@ -560,7 +563,7 @@ body
       color: #fff
       text-align: center
       font-weight: 400
-      text-shadow: 0px 1px 16px rgba(0,0,0,0.5), 0px 0px 1px rgba(0,0,0,0.5)
+      // text-shadow: 0px 1px 16px rgba(0,0,0,0.5), 0px 0px 1px rgba(0,0,0,0.5)
     .custom-links
       margin: 0 0 50px
     .btn
@@ -573,7 +576,7 @@ body
       text-decoration: none
       cursor: pointer
       height: 44px
-      background: #57ad68
+      background: #93B3C0
       color: #fff
       vertical-align: middle
       box-sizing: border-box
