@@ -1,5 +1,6 @@
 # Build settings
 markdown: redcarpet
+permalink: /:title
 highlighter: pygments
 gems:
   - jemoji
