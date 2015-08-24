@@ -1,55 +1,70 @@
-# Build settings
-markdown: redcarpet
-permalink: /:title
-highlighter: pygments
-gems:
-  - jemoji
+url: http://drewfrom.space/
+baseurl:
 
 # Site settings
-title: "Blog & stuff"
-description: A blog about some things.
-
+title: Drewz
 email: drewsprice@gmail.com
-#blog logo
-logo: "/assets/images/logo.png"
-# blog cover
-cover: "/assets/images/ocean.jpg"
+description: "Party & stuff or something"
 
-name: 'Drew Price'
-author: 'Drew Price'
-author_image: "/assets/images/head.png"
+# Color settings (hex-codes without the leading hash-tag)
+color:
+  primary: fed136
+  secondary: fec503
+  secondary-dark: 333
 
-paginate:	5
+# Team names, titles and social links
+people:
+- name: Kay Garland
+  pic: 1
+  position: Lead Designer
+  social:
+    - title: twitter
+      url: #
+    - title: facebook
+      url: #
+    - title: stack-overflow
+      url: #
 
-url: "http://drewfrom.space/" # the base hostname & protocol for your site
-baseurl: ""
+- name: Larry Parker
+  pic: 2
+  position: Lead Marketer
+  social:
+    - title: twitter
+      url: #
+    - title: facebook
+      url: #
+    - title: linkedin
+      url: #
 
-# social icons and sharing options
+- name: Diana Petersen
+  pic: 3
+  position: Lead Developer
+  social:
+    - title: twitter
+      url: #
+    - title: facebook
+      url: #
+    - title: google-plus
+      url: #
+
+# Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
-  - icon:	twitter
-    url:	https://twitter.com/drewfromspace
-    desc: Follow me on twitter
-    share_url: http://twitter.com/share
-    share_title: ?text=
-    share_link: "&amp;url="
+  - title: twitter
+    url: http://twitter.com/drewfromspace
+  - title: facebook
+    url:
+  - title: stack-overflow
+    url:
+  - title: bitbucket
+    url: http://bitbucket.org/drewprice
+  - title: github
+    url: http://github.com/drewprice
 
-#  - icon:	facebook
-#    url:	https://facebook.com/???
-#    desc: Connect with me facebook
-#    share_url: https://www.facebook.com/sharer.php
-#    share_title: ?t=
-#    share_link: "&amp;u="
+# Postal address (add as many lines as necessary)
+address:
+  - line: 3481 Melrose Place
+  - line: Beverly Hills, CA 90210
 
-  - icon:	github
-    url:	https://github.com/drewprice
-    desc:	Fork me on github
-    share_url:
-    share_title:
-    share_link:
-
-#  - icon:	google-plus
-#    url:	https://google.com/???
-#    desc:	Add me on google+
-#    share_url:
-#    share_title:
-#    share_link:
+# Build settings
+markdown: kramdown
+permalink: pretty
