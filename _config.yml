@@ -2,68 +2,49 @@ url: http://drewfrom.space/
 baseurl:
 
 # Site settings
-title: Awesome Title
-email: your-email@domain.com
-description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
+title: Drew Price
+title_tag: Drew Price | Webz
+email: drew.s.price@gmail.com
+description: "I build things for the interwebz."
 
 # Color settings (hex-codes without the leading hash-tag)
 color:
-  primary: fed136
-  secondary: fec503
+  primary: A0866E
+  secondary: DAD1C5
   secondary-dark: 333
 
 # Team names, titles and social links
 people:
-- name: Kay Garland
+- name: Drew Price
   pic: 1
-  position: Lead Designer
+  position: Web Developer
   social:
     - title: twitter
-      url: #
-    - title: facebook
-      url: #
-    - title: stack-overflow
-      url: #
-
-- name: Larry Parker
-  pic: 2
-  position: Lead Marketer
-  social:
-    - title: twitter
-      url: #
-    - title: facebook
-      url: #
+      url: https://twitter.com/drewfromspace
     - title: linkedin
-      url: #
-
-- name: Diana Petersen
-  pic: 3
-  position: Lead Developer
-  social:
-    - title: twitter
-      url: #
-    - title: facebook
-      url: #
-    - title: google-plus
-      url: #
+      url: https://www.linkedin.com/in/drewscottprice
+    - title: github
+      url: http://github.com/drewprice
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
   - title: twitter
-    url: http://twitter.com/jekyllrb
+    url: http://twitter.com/drewfromspace
   - title: facebook
-    url:
+    url: https://www.facebook.com/drewscottprice
   - title: stack-overflow
-    url: http://stackoverflow.com/questions/tagged/jekyll
-  - title: bitbucket
-    url: http://bitbucket.org/jekyll
+    url: http://stackoverflow.com/users/3940242/drew-price
+  - title: linkedin
+    url: https://www.linkedin.com/in/drewscottprice
   - title: github
-    url: http://github.com/jekyll
+    url: http://github.com/drewprice
 
 # Postal address (add as many lines as necessary)
 address:
-  - line: 3481 Melrose Place
-  - line: Beverly Hills, CA 90210
+  - line:
+  - line:
+  - line:
+  - line:
 
 # Build settings
 markdown: kramdown
