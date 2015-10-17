@@ -1,0 +1,120 @@
+<p><em>JavaScript is in the process of getting a big fancy makeover, and while most of its new features aren’t widely supported by browsers just yet, there is an easy way start using it in your projects.</em></p>
+
+<p><em>I’ll walk through a few of the features that I think are neat as a newcomer to JavaScript and talk a bit about how to start using ES6.</em></p>
+
+<p><em>Also, ES6 is officially(?) known as ES2015. Web folk are upset about that—or something? The idea, however, is that there will be an ES2016, an ES2017, and so on.</em>
+### tl;dr
+To start using ES2015, check out <a href="https://babeljs.io/">Babel</a>.</p>
+
+<h2 id="new-stuff">New stuff</h2>
+<p>#### Classy
+The newest iteration of JavaScript allows you to create objects that look a lot like classes. You may notice a few extra unfamiliar bits in here, more on those coming up.</p>
+
+<p>```JavaScript
+class Whale {
+  constructor(name, pals = []) {
+    this.name = name;
+    this.pals = pals;
+  }</p>
+
+<p>swim() {
+    return <code>${this.name} is going for a swim. Always.</code>
+  }</p>
+
+<p>static definition() {
+    return ‘Sort of like a fish, but huge.’
+  }
+}
+```
+Which lets you do this:</p>
+
+<p>```JavaScript
+let moby = new Whale(‘Moby’);</p>
+
+<p>moby.name;   // &gt; “Moby”
+moby.pals;   // &gt; []
+moby.swim(); // &gt; “Moby is going for a swim. Always.”</p>
+
+<p>Whale.definition(); // &gt; “Sort of like a fish, but huge.”
+```
+To make a comparison with something more familiar, the <code>constructor</code> method here is very much like Ruby’s <code>initialize</code>: it sets certain attributes, or states, for a newly created instance of the object.</p>
+
+<p>Similarly, <code>swim</code> is an instance method on the object, and <code>definition</code> is a static, or class method.</p>
+
+<p>It may be worth noting that this <em>is not</em> a class; it’s still an object. This new syntax just provides a cleaner way to build and maintain an object, rather than making a big mess with <code>prototype</code>. It’s sugar to provide smoother abstraction.</p>
+
+<h4 id="parametric">Parametric</h4>
+<p>As the previous example demonstrated, you can now give function parameters default values.</p>
+
+<p>```JavaScript
+function sayHi(thing = ‘dinosaurs’) {
+  return <code>Hi ${thing}.</code>
+}</p>
+
+<p>sayHi();  // &gt; “Hi dinosaurs.”
+```</p>
+
+<h4 id="awesome-strings">Awesome strings?</h4>
+<p>Interpolation is a new thing for JavaScript, and new things are great. ES2015 also introduced multi-line strings, so that the following is totally valid. Notice the back-ticks in both of these. You need those.</p>
+
+<p><code>JavaScript
+let blogIdea = `I was going to make this whole blog Justin
+Timberlake-themed. I had so many great gifs: some old school
+curly haired JT, some with his stuff in a box.
+But, you know, limits are good. Oh well.`
+</code></p>
+
+<p>Unfortunately, my syntax highlighting is a little whompsy as it doesn’t know ES6 just yet, but this a completely legitimate string.</p>
+
+<p><img src="/blog/assets/article_images/2015-09-15-es2015/oh-well.gif" alt="" title="JT says oh well" /></p>
+
+<h4 id="let-is-so-hot-right-now">Let is so hot right now</h4>
+<p>You may have noticed I’m using <code>let</code> rather than <code>var</code>—that’s because <code>let</code> is the new <code>var</code>. <code>var</code> is still totally valid JavaScript, but <code>let</code> has fixed some of the common issues related to variable scope, particularly in blocks. The general internet consensus is that <code>let</code> should pretty much be the standard from here on out.</p>
+
+<p>ES6 also introduces constants, or <code>const</code>. Constants, once assigned, cannot be reassigned. They are read-only. If, however, you assign an object to a constant, you cannot reassign the constant but you can edit properties of the object.</p>
+
+<p><code>JavaScript
+const yearbook = "Never change"
+</code></p>
+
+<h4 id="arrow-functions">Arrow functions</h4>
+<p>That sort of just sounds cool on its own. Arrow functions are a new way to declare functions, that give you a few added benefits.</p>
+
+<p>One of the biggest is that arrow functions automatically bind <code>this</code>. This eliminates the strange <code>.bind(this)</code> that is usually tacked onto callback functions. Under the right conditions, the arrow function also provides a refreshing bit of brevity.</p>
+
+<p>```JavaScript
+// Old school…
+[0, 1, 2].map(function(e){
+  return e + 1;
+});
+//  &gt; [1, 2, 3]</p>
+
+<p>// With an arrow function…
+[0, 1, 2].map(e =&gt; e++);
+//  &gt; [1, 2, 3]
+```
+In the case of a single line arrow function, the return can be implicit. It may be hard to see in this example, but <code>=&gt;</code> is actually a substitution for the <code>function</code> keyword and can be used to declare functions anywhere in your code.</p>
+
+<h2 id="how-to-use-it">How to use it</h2>
+<p>The best way to actually start writing code in ES2015 is to use the <a href="https://babeljs.io/">Babel</a> compiler. Babel allows you to write JavaScript according to ES6, and then compiles it into the ES5 code that would be necessary to make it work. Simply plug these compiled files into your project and you are set.</p>
+
+<p>To get started, simply install the Babel CLI using the instructions <a href="https://babeljs.io/docs/usage/cli/">here</a>. Once you’ve done that, you can compile individual files via the command line tool and Babel will print the compiled code.</p>
+
+<p><code>bash
+$ babel script.js
+# Everything you need
+</code></p>
+
+<p>Or you can designate an out-file for the compiled code:</p>
+
+<p><code>bash
+$ babel script.js --out-file script-compiled.js
+</code></p>
+
+<p>However, I find the most useful way to work with Babel is to set up an entire directory to compile, and then let Babel watch (using the <code>-w</code> flag) for any changes made to files within that directory. So if I am writing my code in a directory named <code>es6_js/</code> and I want all of the files within that directory to be compiled to <code>compiled_js/</code>:</p>
+
+<p><code>bash
+$ babel es6_js/ -w --out-dir compiled_js/
+</code></p>
+
+<p>I would then include each of the compiled files in to my project. Note that running Babel with the watch flag will take over a Terminal window, so it is best to simply open another tab and let Babel run in the background while you are writing your code.</p>
