@@ -18,12 +18,12 @@ social:
     url: http://twitter.com/drewfromspace
   - title: github
     url: http://github.com/drewprice
-  - title: linkedin
-    url: https://www.linkedin.com/in/drewscottprice
-  - title: instagram
-    url: https://instagram.com/drewfromspace/
   - title: codepen
     url: http://codepen.io/drewprice/
+  - title: linkedin
+    url: http://www.linkedin.com/in/drewscottprice
+  - title: instagram
+    url: http://instagram.com/drewfromspace/
 
 # Build settings
 markdown: redcarpet
