@@ -17,8 +17,13 @@ body {
   transition: all 0.5s ease-in-out;
 }
 
+.btn-xl:hover, .btn-xl:focus {
+  color: #{{ site.color.secondary-dark }};
+  background: transparent;
+}
+
 .btn-xl:hover {
-  /*background: url(../img/space-bkg.png);*/
+  box-shadow: 3px 3px #{{ site.color.secondary-dark }}
 }
 
 .navbar-default .nav li a {
@@ -98,6 +103,11 @@ section#contact, ul.social-buttons li a {
 
 section#contact .btn {
   color: #fff;
+  border-color: #fff;
+}
+
+section#contact .btn:hover {
+  box-shadow: 2px 2px #fff;
 }
 
 section h2.section-heading {
@@ -117,4 +127,13 @@ section h2.section-heading {
 footer span.copyright {
   font-family: Roboto;
   font-weight: 100;
+}
+
+section h3.section-subheading {
+  font-family: Roboto;
+  font-style: normal;
+}
+
+section#contact .form-group textarea.form-control {
+  height: 245px;
 }
