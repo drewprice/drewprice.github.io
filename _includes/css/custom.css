@@ -137,3 +137,12 @@ section h3.section-subheading {
 section#contact .form-group textarea.form-control {
   height: 245px;
 }
+
+h5 {
+  font-size: 7em;
+  font-weight: 100;
+}
+
+.timeline>li .timeline-image {
+  border: none;
+}
