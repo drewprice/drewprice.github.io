@@ -114,3 +114,8 @@ section h2.section-heading {
 #portfolio.post-grid .portfolio-item .portfolio-caption {
   background: #f7f7f7;
 }
+
+footer span.copyright {
+  font-family: Roboto;
+  font-weight: 100;
+}
