@@ -1,0 +1,91 @@
+<p><em>If you are willing to dig around a bit, you&#39;ll find <a href="http://tech.natemurray.com/2007/03/ruby-shell-commands.html">several methods</a> to <a href="http://stackoverflow.com/questions/2232/calling-shell-commands-from-ruby">do this</a>. However, most of these will require some sloppy hacking—that is—trying things you don&#39;t understand until something accidentally works. So here&#39;s to doing it on purpose. Next time. Probably.</em></p>
+
+<h3>tl;dr</h3>
+
+<p>Run shell commands in Ruby like this:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;say &#39;hello from shell&#39;&quot;</span>
+<span class="n">process_var</span> <span class="o">=</span> <span class="no">IO</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div>
+<p>So that you can kill them, also in Ruby, like this:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Process</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">process_var</span><span class="o">.</span><span class="n">pid</span><span class="p">)</span>
+</code></pre></div>
+<h2>The problem: an itch</h2>
+
+<p>You want your Ruby CLI to perform shell commands. Maybe you want to run some gross, jazzy background music with <code>afplay</code>. Maybe <a href="https://github.com/tylermachen/rantbot">you&#39;ve built a robot to insult you</a>, but you want it do so verbally with <code>say</code>.</p>
+
+<p>This all seems reasonable enough, but how can you bridge the gap between the thing that&#39;s running, and the thing that&#39;s running the thing? You know?</p>
+
+<h2>The solution: some RASH</h2>
+
+<p>Not a thing. I made it up. Ruby-ass-shell? Whatever.</p>
+
+<p>It&#39;s actually quite easy to run a shell command from within your Ruby code. To try it, fork and/or clone <a href="https://github.com/drewprice/rash">this repo</a>:</p>
+<div class="highlight"><pre><code class="language-BASH" data-lang="BASH"><span class="nv">$ </span>git clone https://github.com/drewprice/rash.git
+<span class="nv">$ </span><span class="nb">cd </span>rash/
+</code></pre></div>
+<p>Once you&#39;re there, run:</p>
+<div class="highlight"><pre><code class="language-BASH" data-lang="BASH"><span class="nv">$ </span>ruby rash.rb
+</code></pre></div>
+<p>Cool, sorta, right? This is what happened:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">puts</span> <span class="s1">&#39;shell:&#39;</span>
+
+<span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;say &#39;hello this is shell.&#39;&quot;</span>
+<span class="nb">system</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+
+<span class="nb">puts</span> <span class="s2">&quot;Ruby: Whoa. I... can&#39;t talk.&quot;</span>
+</code></pre></div>
+<p>Ruby tells us that the shell has something to say, the shell says it, and finally, when it&#39;s has finished, Ruby has its turn to close out the program.</p>
+
+<h2>The new problem: taking turns</h2>
+
+<p>The shell took awhile to get through its job, and we had to wait for it the whole time. This might be fine in some circumstances, but let&#39;s say you&#39;re building a CLI that has a lot of speaking to do, and you want to listen, but you would also like to be able do other things while you listen.</p>
+
+<p>The trouble is, you are stuck listening to the shell until it has finished. Try this:</p>
+<div class="highlight"><pre><code class="language-BASH" data-lang="BASH"><span class="nv">$ </span>ruby duck_hunt.rb
+</code></pre></div>
+<p>In this game, ideally, the duck would appear right when the speaker starts trying to convince you not to shoot. That way you can shoot the duck and be done long before you are made to feel bad.</p>
+
+<p>However, Ruby is only going to do one thing at a time: let the shell have its turn, and then you can shoot the duck. You&#39;re destined to lose.</p>
+
+<h2>The new solution: f* taking turns</h2>
+
+<p>The shell actually comes to the rescue here. In the first version of <code>duck_hunt.rb</code>, Ruby ran its shell command like this:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;say &#39;</span><span class="si">#{</span><span class="n">stuff_to_make_you_feel_bad</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+<span class="nb">system</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div>
+<p>By simply throwing an <code>&amp;</code> onto the end of that command, shell will move the process into the background, allowing Ruby to continue about its biz:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;say &#39;</span><span class="si">#{</span><span class="n">stuff_to_make_you_feel_bad</span><span class="si">}</span><span class="s2">&#39; &amp;&quot;</span>
+<span class="nb">system</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div>
+<p>Try it out in <code>duck_hunt_2.rb</code>!</p>
+<div class="highlight"><pre><code class="language-BASH" data-lang="BASH"><span class="nv">$ </span>ruby duck_hunt_2.rb
+</code></pre></div>
+<h2>The final problem: it lives</h2>
+
+<p>That small change <em>almost</em> made it awesome! You killed the duck, you were feeling proud... and then you still had to listen to the whole poem, even though the program itself had stopped running. Which is weird, and a little creepy.</p>
+
+<p>You need someway to tell Ruby to go out, find that process, snag its process id, and kill it before the program exits:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;kill -15 $(ps aux | pgrep -l say | egrep -o &#39;</span><span class="se">\\</span><span class="s2">d+&#39;) &amp;&gt; /dev/null&quot;</span>
+<span class="nb">system</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div>
+<p>This works, but it&#39;s also a mess. And what if you are someone who likes to run multiple <code>say</code> processes simultneously? How can we be sure that we&#39;ve got the right one?</p>
+
+<h2>A final solution: kill it</h2>
+
+<p>Instead of creating this strange phantom process that&#39;s quite a doozy to kill, let&#39;s instantiate an object that willingly surrenders to the proper authority:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;say &#39;</span><span class="si">#{</span><span class="n">stuff_to_make_you_feel_bad</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+<span class="n">say_poem</span> <span class="o">=</span> <span class="no">IO</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div>
+<p>This now utilizes Ruby&#39;s <code>IO</code> class, which <a href="http://ruby-doc.org/core-2.2.0/IO.html#method-c-popen">&quot;is the basis for all input and output in Ruby&quot;</a>. The <code>IO::popen</code> method runs the <code>command</code> as a subprocess and stores its process id, which can be accessed through the <code>IO#pid</code> method. So here, I am storing the process in an object that I can access with the variable, <code>say_poem</code>.</p>
+
+<p>Not only is this much cleaner, it&#39;s also a much better object-oriented design—in that it actually is object-oriented design. With this, we simply call upon <a href="http://ruby-doc.org/core-2.2.0/Process.html#method-c-kill">Ruby&#39;s <code>Process</code> module</a> to come in and <code>kill</code> the subprocess whenever we see fit:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Process</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">say_poem</span><span class="o">.</span><span class="n">pid</span><span class="p">)</span>
+</code></pre></div>
+<p>Try it out in <code>duck_hunt_3.rb</code>:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ruby duck_hunt_3.rb
+</code></pre></div>
+<p>Wonderful isn&#39;t it? We leave having killed the duck and the process without a bit of guilt. Shootin&#39; ducks and feelin&#39; like a million bucks. Or something?</p>
+
+<blockquote>
+<p>Check out the project that inspired this post, <a href="https://github.com/stefania11/Cosmos-Ascii">cosmos-ascii</a>. Built with <a href="https://twitter.com/Stefania_druga">Stefania Druga</a>, this soon-to-be(?) Ruby gem allows you to view NASA&#39;s <a href="http://apod.nasa.gov/">Astronomy Picture of Day</a> via the command line—playing you sweet space tunes while a robot explains the wonders of the cosmos.</p>
+</blockquote>
