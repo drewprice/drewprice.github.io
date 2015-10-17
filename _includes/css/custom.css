@@ -1,0 +1,90 @@
+body {
+  font-family: Roboto;
+}
+
+.btn,
+.navbar-default .navbar-nav>.active>a {
+  font-family: Roboto;
+  font-weight: 300;
+  color: #333;
+  border-radius: 0;
+  border: 1px solid #{{ site.color.primary }};
+  background: transparent;
+}
+
+.btn-xl {
+  text-transform: none;
+}
+
+.navbar-default .nav li a {
+  color: #333;
+  font-family: Roboto;
+  font-weight: 100;
+  border: 1px solid transparent;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+  color: #333;
+  font-weight: 100;
+  background: transparent;
+}
+
+.navbar-default .nav li a:focus {
+  color: #333;
+}
+
+.navbar-default .nav li a:hover {
+  color: #{{ site.color.primary }};
+}
+.navbar-default {
+  border-color: #fff;
+  padding: 10px;
+}
+
+/* HEADER */
+
+header {
+  background: #fff;
+}
+
+header .intro-text .intro-heading,
+header .intro-text .intro-lead-in {
+  font-family: Roboto;
+  font-weight: 300;
+  color: #333;
+  text-transform: none;
+}
+
+header .intro-text .intro-heading, {
+  margin-bottom: 0;
+  font-size: 7em;
+}
+
+header .intro-text .intro-lead-in {
+  font-size: 1.4em;
+  font-style: normal;
+}
+
+.navbar-default.navbar-shrink {
+  background: #fff;
+}
+
+.container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse {
+  background: #fff;
+}
+
+header .intro-text {
+
+}
+
+/* FORMS */
+.form-control {
+  border-radius: 0;
+}
+
+/* SECTION */
+section h2.section-heading {
+  font-family: Roboto;
+  font-weight: 300;
+  text-transform: none;
+}
