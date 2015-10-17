@@ -66,7 +66,7 @@ h6 {
 }
 
 .bg-darkest-gray {
-    background-color: #222;
+    background-color: #{{ site.color.secondary-dark }};
 }
 
 .btn-primary {
@@ -172,7 +172,7 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default {
     border-color: transparent;
-    background-color: #222;
+    background-color: #{{ site.color.secondary-dark }};
 }
 
 .navbar-default .navbar-brand {
@@ -254,7 +254,7 @@ fieldset[disabled] .btn-xl.active {
 
     .navbar-default.navbar-shrink {
         padding: 10px 0;
-        background-color: #222;
+        background-color: #{{ site.color.secondary-dark }};
     }
 
     .navbar-default.navbar-shrink .navbar-brand {
@@ -654,7 +654,7 @@ aside.clients img {
 }
 
 section#contact {
-    background-color: #222;
+    background-color: #{{ site.color.secondary-dark }};
     background-image: url(../img/map-image.png);
     background-position: center;
     background-repeat: no-repeat;
@@ -751,7 +751,7 @@ ul.social-buttons li a {
     line-height: 40px;
     outline: 0;
     color: #fff;
-    background-color: #222;
+    background-color: #{{ site.color.secondary-dark }};
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
     transition: all .3s;
@@ -825,7 +825,7 @@ ul.social-buttons li a:active {
     width: 1px;
     height: 75px;
     margin-left: 35px;
-    background-color: #222;
+    background-color: #{{ site.color.secondary-dark }};
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -835,7 +835,7 @@ ul.social-buttons li a:active {
     z-index: 1052;
     width: 1px;
     height: 75px;
-    background-color: #222;
+    background-color: #{{ site.color.secondary-dark }};
     -webkit-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
