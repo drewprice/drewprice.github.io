@@ -146,3 +146,20 @@ h5 {
 .timeline>li .timeline-image {
   border: none;
 }
+
+#projects .portfolio-hover-content i {
+  color: #fff;
+  padding: 5px 5px 0 0;
+}
+
+#projects .portfolio-item .portfolio-caption p {
+  font-style: normal;
+}
+
+.portfolio-hover-content {
+  padding: 5px 0 1px 0;
+}
+
+a.portfolio-link:hover {
+  text-decoration: none;
+}

@@ -1,12 +1,18 @@
 ---
 title: littleBIG
-subtitle: Website Design
+subtitle: Ask questions like a 5 year old
 layout: default
 modal-id: 1
 url: http://littlebig.herokuapp.com/
-date: 2015-10-09
-img: littlebig.png
-thumbnail: littlebig-thumbnail.png
+date: 2015-10-10
+devicons:
+  - ruby_on_rails
+  - javascript
+  - jquery
+  - bootstrap
+  - postgresql
+  - heroku
+color: 0199AE
 alt: image-alt
 project-date: October 2015
 client: Flatiron School
